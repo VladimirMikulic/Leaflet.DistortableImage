@@ -1,0 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Lint
+
+on: [push]
+
+jobs:
+  lint:
+    name: Lint Code Base
+
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so the job can access it
+    - uses: actions/checkout@v2
+  
+    - name: Enter src directory
+      run: cd src
+  
+    - name: Lint Code Base
+      uses: docker://github/super-linter:v2.1.1
+      env:
+        VALIDATE_ALL_CODEBASE: false
